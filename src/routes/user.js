@@ -19,8 +19,9 @@ const userRouter = (db) => {
               res.status(500).send('Unexpected error occured!');
             });
           } else {
-            console.log('User: Fetch users is not allowed for regular users.');
-            res.status(401).send('Fetch users not allowed for this user!');
+            delete user.isAdmin;
+            delete user.password;
+            res.status(200).json(user);
           }
         }).catch((ex) => {
           console.log('User: While fetching user an error occured:', ex);

@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "API-Queries-Postman",
-		"_postman_id": "68e48c61-0662-ade1-02a9-f91c4689a1f0",
+		"_postman_id": "fa072900-4fc1-5e2f-5984-1b7836960ed3",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -10,10 +10,19 @@
 		{
 			"name": "register",
 			"request": {
-				"url": "",
-				"method": "GET",
-				"header": [],
-				"body": {},
+				"url": "http://localhost:8787/register",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\": \"user1\", \"password\": \"cscon18\", \"houseId\": 1}"
+				},
 				"description": ""
 			},
 			"response": []
@@ -102,31 +111,6 @@
 					}
 				],
 				"body": {},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "register",
-			"request": {
-				"url": "http://localhost:8787/register",
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
-					},
-					{
-						"key": "authorization",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3R1c2VyIiwiYXV0aCI6dHJ1ZSwiaWF0IjoxNTE4NjI1MDQ5fQ.XrquhjtmoI5253bCugiUE8MnjxesttYEjCzaZK376Mw",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"username\": \"testuser2\", \"password\": \"1234756\", \"houseId\":1}"
-				},
 				"description": ""
 			},
 			"response": []

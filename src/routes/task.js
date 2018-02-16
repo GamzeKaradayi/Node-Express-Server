@@ -291,7 +291,7 @@ const taskRouter = (db) => {
                 });
               } else if (task && user) {
                 res.status(401).send('User not allowed for this operation!');
-              } else if (task) {
+              } else if (!task) {
                 res.status(401).send('Task not found!');
               } else {
                 res.status(500).send('User not found!');

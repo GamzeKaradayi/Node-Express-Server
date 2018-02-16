@@ -1,5 +1,5 @@
 {
-  "name": "houseworkup",
+  "name": "cscon18-houseworkup",
   "version": "1.0.0",
   "description": "Training backend services.",
   "main": "src/index.js",
