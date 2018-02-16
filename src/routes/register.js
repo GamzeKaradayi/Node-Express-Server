@@ -14,17 +14,17 @@ const registerRouter = (db) => {
       db.selectAll(houseTable).then((houses) => {
         // house found
         if (houses.find((house) => house.id === houseId)) {
-          db.insertRow(userTable, { username, password, houseId }).then(() => {
+          db.insertRow(userTable, { username, password, houseId }).then((id) => {
             console.log(`Register: Successfully new user added with username: ${username} pass: ${password} houseId: ${houseId}.`);
-            res.status(200).send('Success');
+            res.status(200).json({ id, username, houseId });
           }).catch((ex) => {
             console.log('Register: While insterting new user an error occured: ', ex);
             res.status(500).send('Failed');
           });
         } else { // house not found
-          db.insertRow(userTable, { username, password }).then(() => {
+          db.insertRow(userTable, { username, password }).then((id) => {
             console.log(`Register: Successfully new user added with username: ${username} pass: ${password}.`);
-            res.status(200).send('Success');
+            res.status(200).json({ id, username, houseId });
           }).catch((ex) => {
             console.log('Register: While insterting new user an error occured: ', ex);
             res.status(500).send('Failed');

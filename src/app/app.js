@@ -5,6 +5,7 @@ import userRouter from '../routes/user';
 import registerRouter from '../routes/register';
 import loginRouter from '../routes/login';
 import houseRouter from '../routes/house';
+import taskRouter from '../routes/task';
 
 const express = require('express');
 const expressjwt = require('express-jwt');
@@ -45,7 +46,8 @@ const start = (db) => new Promise((resolve, reject) => {
     app.use('/users', userRouter(db));
     app.use('/register', registerRouter(db));
     app.use('/login', loginRouter(db));
-    app.use('/house', houseRouter(db));
+    app.use('/houses', houseRouter(db));
+    app.use('/tasks', taskRouter(db));
     app.get('/*', (req, res, next) => {
       res.status(200).send('404');
     });

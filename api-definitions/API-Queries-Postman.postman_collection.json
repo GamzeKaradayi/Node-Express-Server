@@ -1,0 +1,337 @@
+{
+	"variables": [],
+	"info": {
+		"name": "API-Queries-Postman",
+		"_postman_id": "68e48c61-0662-ade1-02a9-f91c4689a1f0",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "register",
+			"request": {
+				"url": "",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"url": "http://localhost:8787/login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\": \"user1\", \"password\": \"cscon18\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "houses",
+			"request": {
+				"url": "http://localhost:8787/houses",
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ1c2VyMSIsImFkbWluIjowLCJpc0F1dGgiOnRydWUsImlhdCI6MTUxODc5ODQwMX0.OQAGqO0XtGB2j0bSANMRATU6nMnzILYYyBdLk7io5ew",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "house by id",
+			"request": {
+				"url": "http://localhost:8787/houses/3",
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ1c2VyMSIsImFkbWluIjowLCJpc0F1dGgiOnRydWUsImlhdCI6MTUxODc5ODQwMX0.OQAGqO0XtGB2j0bSANMRATU6nMnzILYYyBdLk7io5ew",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "house users",
+			"request": {
+				"url": "http://localhost:8787/houses/1/users",
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ1c2VyMSIsImFkbWluIjowLCJpc0F1dGgiOnRydWUsImlhdCI6MTUxODc5ODQwMX0.OQAGqO0XtGB2j0bSANMRATU6nMnzILYYyBdLk7io5ew",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "house tasks",
+			"request": {
+				"url": "http://localhost:8787/houses/1/tasks",
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ1c2VyMSIsImFkbWluIjowLCJpc0F1dGgiOnRydWUsImlhdCI6MTUxODc5ODQwMX0.OQAGqO0XtGB2j0bSANMRATU6nMnzILYYyBdLk7io5ew",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "register",
+			"request": {
+				"url": "http://localhost:8787/register",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3R1c2VyIiwiYXV0aCI6dHJ1ZSwiaWF0IjoxNTE4NjI1MDQ5fQ.XrquhjtmoI5253bCugiUE8MnjxesttYEjCzaZK376Mw",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\": \"testuser2\", \"password\": \"1234756\", \"houseId\":1}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "create house only admin user",
+			"request": {
+				"url": "http://localhost:8787/houses",
+				"method": "POST",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ1c2VyMSIsImFkbWluIjowLCJpc0F1dGgiOnRydWUsImlhdCI6MTUxODc5ODQwMX0.OQAGqO0XtGB2j0bSANMRATU6nMnzILYYyBdLk7io5ew",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"new house\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "users",
+			"request": {
+				"url": "http://localhost:8787/users",
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ1c2VyMSIsImFkbWluIjowLCJpc0F1dGgiOnRydWUsImlhdCI6MTUxODc5ODQwMX0.OQAGqO0XtGB2j0bSANMRATU6nMnzILYYyBdLk7io5ew",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "user by id",
+			"request": {
+				"url": "http://localhost:8787/users/1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ1c2VyMSIsImFkbWluIjowLCJpc0F1dGgiOnRydWUsImlhdCI6MTUxODc5ODQwMX0.OQAGqO0XtGB2j0bSANMRATU6nMnzILYYyBdLk7io5ew",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "user tasks",
+			"request": {
+				"url": "http://localhost:8787/users/2/tasks",
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ1c2VyMSIsImFkbWluIjowLCJpc0F1dGgiOnRydWUsImlhdCI6MTUxODc5ODQwMX0.OQAGqO0XtGB2j0bSANMRATU6nMnzILYYyBdLk7io5ew",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "tasks",
+			"request": {
+				"url": "http://localhost:8787/tasks",
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbnVzZXIiLCJhZG1pbiI6MSwiaXNBdXRoIjp0cnVlLCJpYXQiOjE1MTg3OTQ3NTV9.Pq6VRFPlqJ5cAJ9cIjzYbNOiDMxH0JxxfDjW9pFWbA8",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "create task",
+			"request": {
+				"url": "http://localhost:8787/tasks",
+				"method": "POST",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ1c2VyMSIsImFkbWluIjowLCJpc0F1dGgiOnRydWUsImlhdCI6MTUxODc5ODQwMX0.OQAGqO0XtGB2j0bSANMRATU6nMnzILYYyBdLk7io5ew",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"description\": \"another task\", \"houseId\": 1}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "task by id",
+			"request": {
+				"url": "http://localhost:8787/tasks/3",
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbnVzZXIiLCJhZG1pbiI6MSwiaXNBdXRoIjp0cnVlLCJpYXQiOjE1MTg3OTQ3NTV9.Pq6VRFPlqJ5cAJ9cIjzYbNOiDMxH0JxxfDjW9pFWbA8",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "update task",
+			"request": {
+				"url": "http://localhost:8787/tasks/1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbnVzZXIiLCJhZG1pbiI6MSwiaXNBdXRoIjp0cnVlLCJpYXQiOjE1MTg3OTQ3NTV9.Pq6VRFPlqJ5cAJ9cIjzYbNOiDMxH0JxxfDjW9pFWbA8",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"description\": \"if I am not a admin: i cant update description\", \"done\": false, \"userId\": 4}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "delete house",
+			"request": {
+				"url": "http://localhost:8787/houses/5",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ1c2VyMSIsImFkbWluIjowLCJpc0F1dGgiOnRydWUsImlhdCI6MTUxODc5ODQwMX0.OQAGqO0XtGB2j0bSANMRATU6nMnzILYYyBdLk7io5ew",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "delete task",
+			"request": {
+				"url": "http://localhost:8787/tasks/5",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbnVzZXIiLCJhZG1pbiI6MSwiaXNBdXRoIjp0cnVlLCJpYXQiOjE1MTg3OTQ3NTV9.Pq6VRFPlqJ5cAJ9cIjzYbNOiDMxH0JxxfDjW9pFWbA8",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

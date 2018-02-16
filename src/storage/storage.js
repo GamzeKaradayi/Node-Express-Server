@@ -1,7 +1,6 @@
 'use strict';
 
 const mysql = require('mysql');
-const uid = require('uid');
 const CONFIG = require('../config/config.js');
 
 const connect = () => Promise.resolve().then(() => {
@@ -47,11 +46,38 @@ const connect = () => Promise.resolve().then(() => {
     });
   });
 
+  const deleteById = (table, id) => new Promise((resolve, reject) => {
+    connection.query(`DELETE FROM ${table.name} WHERE id = ?`, [id], (err, rows, fields) => {
+      if (err) reject(err);
+      else {
+        console.log('Storage: Delete success table: ', table.name, ' with id ', id);
+        resolve(rows);
+      }
+    });
+  });
+
   const insertRow = (table, row) => new Promise((resolve, reject) => {
     connection.query(`INSERT INTO ${table.name} SET ?`, row, (err, rows, fields) => {
       if (err) reject(err);
       else {
         console.log('Storage: Insert success row: ', row);
+        resolve(rows.insertId);
+      }
+    });
+  });
+
+  const updateWithWhereCondition = (table, updates, where) => new Promise((resolve, reject) => {
+    const whereKeys = Object.keys(where).map((wk) => wk + '= ?').join(' AND ');
+    const whereValues = Object.keys(where).map((wk) => where[wk]);
+    const updateKeys = Object.keys(updates).map((uk) => uk + '= ?').join(' , ');
+    const updateValues = Object.keys(updates).map((uk) => updates[uk]);
+
+    const allValues = updateValues.concat(whereValues);
+
+    connection.query(`UPDATE ${table.name} SET ${updateKeys} WHERE ${whereKeys}`, allValues, (err, rows, fields) => {
+      if (err) reject(err);
+      else {
+        console.log('Storage: Select with condition success table: ', table.name, ' with where ', where);
         resolve();
       }
     });
@@ -70,7 +96,9 @@ const connect = () => Promise.resolve().then(() => {
   return {
     selectAll,
     selectWithWhereCondition,
+    updateWithWhereCondition,
     findById,
+    deleteById,
     insertRow,
     deleteRow
   };

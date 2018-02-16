@@ -18,7 +18,8 @@ const loginRouter = (db) => {
           res.status(200).json({
             success: true,
             id: user.id,
-            username,
+            username: user.username,
+            houseId: user.houseId,
             jwt: jwt.sign({
               id: user.id,
               username: user.username,
