@@ -1,0 +1,10 @@
+{
+  "name": "user",
+  "fields": [
+    "id",
+    "username",
+    "password",
+    "isAdmin",
+    "houseId"
+  ]
+}

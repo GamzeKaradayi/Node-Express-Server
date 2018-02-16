@@ -1,0 +1,9 @@
+{
+  "name": "task",
+  "fields": [
+    "id",
+    "description",
+    "done",
+    "userId"
+  ]
+}

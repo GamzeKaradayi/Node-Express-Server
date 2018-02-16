@@ -1,0 +1,7 @@
+{
+  "name": "house",
+  "fields": [
+    "id",
+    "name"
+  ]
+}
