@@ -5,6 +5,8 @@ Backend server implementation with
 * [MYSQL](https://www.mysql.com/)
 
 API definitions json file can be found at *api-definitions* folder.
+Or
+Use swagger api: [/swagger](http://localhost:8787/swagger)
 
 ## Start Development
 To start development follow steps:
