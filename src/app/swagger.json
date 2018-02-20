@@ -1,0 +1,562 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "",
+    "description": "",
+    "version": "1.0"
+  },
+  "produces": ["application/json"],
+  "paths": {
+    "/register": {
+      "post": {
+        "operationId": "register",
+        "tags": ["/register"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "summary": "",
+        "description": "Register new user",
+        "parameters": [{
+          "in": "body",
+          "name": "body",
+          "description": "Create New user with username & password.",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/NewUser"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "User successfully created",
+            "schema": {
+              "$ref": "#/definitions/NewUser"
+            }
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "operationId": "login",
+        "tags": ["/login"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "summary": "",
+        "description": "Authneticate user wiht password login",
+        "parameters": [{
+          "in": "body",
+          "name": "body",
+          "description": "Login with username & password.",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/LoginUser"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "User successfully logged in",
+            "schema": {
+              "$ref": "#/definitions/LoginResponse"
+            }
+          }
+        }
+      }
+    },
+    "/houses": {
+      "get": {
+        "operationId": "fetchHouses",
+        "tags": ["/houses"],
+        "produces": [
+          "application/json"
+        ],
+        "summary": "",
+        "description": "Fetch available houses",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Houses successfully fetched",
+            "schema": {
+              "$ref": "#/definitions/House"
+            }
+          }
+        },
+        "security": [{ "JWT": [] }]
+      }
+    },
+    "/houses/{id}": {
+      "get": {
+        "operationId": "fetchHouseById",
+        "tags": ["/houses"],
+        "produces": [
+          "application/json"
+        ],
+        "summary": "",
+        "description": "Fetch available house with id",
+        "parameters": [{
+          "name": "id",
+          "in": "path",
+          "description": "ID of house that needs to be fetched",
+          "required": true,
+          "type": "integer",
+          "minimum": 1,
+          "format": "int32"
+        }],
+        "responses": {
+          "200": {
+            "description": "House successfully fetched",
+            "schema": {
+              "$ref": "#/definitions/House"
+            }
+          }
+        },
+        "security": [{ "JWT": [] }]
+      }
+    },
+    "/houses/{id}/users": {
+      "get": {
+        "operationId": "fetchHouseUsers",
+        "tags": ["/houses"],
+        "produces": [
+          "application/json"
+        ],
+        "summary": "",
+        "description": "Fetch joined users of house",
+        "parameters": [{
+          "name": "id",
+          "in": "path",
+          "description": "ID of house that needs to be fetched belonging users",
+          "required": true,
+          "type": "integer",
+          "minimum": 1,
+          "format": "int32"
+        }],
+        "responses": {
+          "200": {
+            "description": "House users successfully fetched",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        },
+        "security": [{ "JWT": [] }]
+      }
+    },
+    "/houses/{id}/tasks": {
+      "get": {
+        "operationId": "fetchHouseTasks",
+        "tags": ["/houses"],
+        "produces": [
+          "application/json"
+        ],
+        "summary": "",
+        "description": "Fetch joined tasks of house",
+        "parameters": [{
+          "name": "id",
+          "in": "path",
+          "description": "ID of house that needs to be fetched belonging tasks",
+          "required": true,
+          "type": "integer",
+          "minimum": 1,
+          "format": "int32"
+        }],
+        "responses": {
+          "200": {
+            "description": "House tasks successfully fetched",
+            "schema": {
+              "$ref": "#/definitions/Task"
+            }
+          }
+        },
+        "security": [{ "JWT": [] }]
+      }
+    },
+    "/users": {
+      "get": {
+        "operationId": "fetchUsers",
+        "tags": ["/users"],
+        "produces": [
+          "application/json"
+        ],
+        "summary": "",
+        "description": "Fetch users",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Users successfully fetched",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        },
+        "security": [{ "JWT": [] }]
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "operationId": "fetchUserById",
+        "tags": ["/users"],
+        "produces": [
+          "application/json"
+        ],
+        "summary": "",
+        "description": "Fetch user with id",
+        "parameters": [{
+          "name": "id",
+          "in": "path",
+          "description": "ID of user that needs to be fetched",
+          "required": true,
+          "type": "integer",
+          "minimum": 1,
+          "format": "int32"
+        }],
+        "responses": {
+          "200": {
+            "description": "User successfully fetched",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        },
+        "security": [{ "JWT": [] }]
+      }
+    },
+    "/users/{id}/tasks": {
+      "get": {
+        "operationId": "fetchUserTasks",
+        "tags": ["/users"],
+        "produces": [
+          "application/json"
+        ],
+        "summary": "",
+        "description": "Fetch joined tasks of user",
+        "parameters": [{
+          "name": "id",
+          "in": "path",
+          "description": "ID of user that needs to be fetched belonging tasks",
+          "required": true,
+          "type": "integer",
+          "minimum": 1,
+          "format": "int32"
+        }],
+        "responses": {
+          "200": {
+            "description": "User tasks successfully fetched",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        },
+        "security": [{ "JWT": [] }]
+      }
+    },
+    "/tasks": {
+      "get": {
+        "operationId": "fetchTasks",
+        "tags": ["/tasks"],
+        "produces": [
+          "application/json"
+        ],
+        "summary": "",
+        "description": "Fetch tasks",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Tasks successfully fetched",
+            "schema": {
+              "$ref": "#/definitions/Task"
+            }
+          }
+        },
+        "security": [{ "JWT": [] }]
+      },
+      "post": {
+        "operationId": "createTask",
+        "tags": ["/tasks"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "summary": "",
+        "description": "Create new task",
+        "parameters": [{
+          "in": "body",
+          "name": "body",
+          "description": "Create new task with description.",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/NewTask"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "New task successfully created.",
+            "schema": {
+              "$ref": "#/definitions/Task"
+            }
+          }
+        },
+        "security": [{ "JWT": [] }]
+      }
+    },
+    "/tasks/{id}": {
+      "get": {
+        "operationId": "fetchTaskById",
+        "tags": ["/tasks"],
+        "produces": [
+          "application/json"
+        ],
+        "summary": "",
+        "description": "Fetch task with id",
+        "parameters": [{
+          "name": "id",
+          "in": "path",
+          "description": "ID of task that needs to be fetched",
+          "required": true,
+          "type": "integer",
+          "minimum": 1,
+          "format": "int32"
+        }],
+        "responses": {
+          "200": {
+            "description": "Task successfully fetched",
+            "schema": {
+              "$ref": "#/definitions/Task"
+            }
+          }
+        },
+        "security": [{ "JWT": [] }]
+      },
+      "put": {
+        "operationId": "updateTask",
+        "tags": ["/tasks"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "summary": "",
+        "description": "Update existed task",
+        "parameters": [{
+          "name": "id",
+          "in": "path",
+          "description": "ID of task that needs to be updated",
+          "required": true,
+          "type": "integer",
+          "minimum": 1,
+          "format": "int32"
+        }],
+        "responses": {
+          "200": {
+            "description": "Task successfully updated.",
+            "schema": {
+              "$ref": "#/definitions/Task"
+            }
+          }
+        },
+        "security": [{ "JWT": [] }]
+      },
+      "delete": {
+        "operationId": "deleteTask",
+        "tags": ["/tasks"],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "summary": "",
+        "description": "Delete existed task",
+        "parameters": [{
+          "name": "id",
+          "in": "path",
+          "description": "ID of task that needs to be deleted",
+          "required": true,
+          "type": "integer",
+          "minimum": 1,
+          "format": "int32"
+        }],
+        "responses": {
+          "200": {
+            "description": "Task successfully deleted."
+          }
+        },
+        "security": [{ "JWT": [] }]
+      }
+    }
+  },
+  "securityDefinitions": {
+    "JWT": {
+      "description": "",
+      "type": "apiKey",
+      "name": "authorization",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "NewUser": {
+      "type": "object",
+      "required": [
+        "username",
+        "password",
+        "houseId"
+      ],
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "houseId": {
+          "type": "integer",
+          "format": "int32",
+          "default": 1
+        }
+      }
+    },
+    "LoginUser": {
+      "type": "object",
+      "required": [
+        "username",
+        "password"
+      ],
+      "properties": {
+        "username": {
+          "type": "string",
+          "default": "user1"
+        },
+        "password": {
+          "type": "string",
+          "default": "cscon18"
+        }
+      }
+    },
+    "LoginResponse": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "username": {
+          "type": "string"
+        },
+        "houseId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "jwt": {
+          "type": "string"
+        }
+      }
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "username": {
+          "type": "string"
+        },
+        "houseId": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "House": {
+      "type": "object",
+      "required": [
+        "id",
+        "name"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "Task": {
+      "type": "object",
+      "required": [],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "description": {
+          "type": "string"
+        },
+        "done": {
+          "type": "boolean"
+        },
+        "userId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "houseId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "createdUserId": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "NewTask": {
+      "type": "object",
+      "required": [
+        "description",
+        "houseId"
+      ],
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "houseId": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "UpdateTask": {
+      "type": "object",
+      "required": [],
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "done": {
+          "type": "boolean"
+        },
+        "userId": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    }
+  }
+}

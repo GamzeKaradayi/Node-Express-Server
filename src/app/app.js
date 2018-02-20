@@ -6,6 +6,8 @@ import registerRouter from '../routes/register';
 import loginRouter from '../routes/login';
 import houseRouter from '../routes/house';
 import taskRouter from '../routes/task';
+import swaggerUi from 'swagger-ui-express';
+import swaggerDocument from './swagger.json';
 
 const express = require('express');
 const expressjwt = require('express-jwt');
@@ -48,11 +50,17 @@ const start = (db) => new Promise((resolve, reject) => {
     app.use('/login', loginRouter(db));
     app.use('/houses', houseRouter(db));
     app.use('/tasks', taskRouter(db));
-    app.get('/*', (req, res, next) => {
-      res.status(200).send('404');
-    });
+    // Swagger
+    const swaggerOptions = {
+      explorer: true
+    };
+    app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument, swaggerOptions));
 
     // Error handling
+    app.get('/*', (req, res, next) => {
+      res.status(404).send('404');
+    });
+
     app.use((err, req, res, next) => {
       if (err.name === 'UnauthorizedError') {
         res.status(401).send('Invalid token!');

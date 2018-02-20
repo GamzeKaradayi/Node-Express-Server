@@ -21,6 +21,7 @@ const taskRouter = (db) => {
                   db.insertRow(taskTable, { description, houseId, createdUserId: user.id }).then((id) => {
                     res.status(200).json({
                       id,
+                      done: null,
                       description,
                       houseId,
                       userId: null
@@ -73,7 +74,7 @@ const taskRouter = (db) => {
               res.status(500).send('Unexpected error occured!');
             });
           } else if (user) {
-            db.selectWithWhereCondition(taskTable, { userId: user.id }).then((tasks) => {
+            db.selectWithWhereCondition(taskTable, { houseId: user.houseId }).then((tasks) => {
               res.status(200).json(tasks);
             }).catch((ex) => {
               console.log('Task: While fetching user tasks an error occured:', ex);

@@ -167,6 +167,7 @@ const houseRouter = (db) => {
   });
 
   // Get house users
+  /* eslint-disable no-param-reassign */
   router.get('/:id/users', (req, res) => {
     const houseId = parseInt(req.params.id, 0);
     if (req.user && req.user.isAuth) {
@@ -184,7 +185,11 @@ const houseRouter = (db) => {
               });
             } else if (user && user.houseId && user.houseId === houseId) {
               db.selectWithWhereCondition(userTable, { houseId }).then((houseUsers) => {
-                res.status(200).json(houseUsers);
+                res.status(200).json(houseUsers.map((houseUser) => {
+                  delete houseUser.isAdmin;
+                  delete houseUser.password;
+                  return houseUser;
+                }));
               }).catch((ex) => {
                 console.log('House: While fetching house users an error occured:', ex);
                 res.status(500).send('Unexpected error occured!');

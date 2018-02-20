@@ -22,13 +22,8 @@ const registerRouter = (db) => {
             res.status(500).send('Failed');
           });
         } else { // house not found
-          db.insertRow(userTable, { username, password }).then((id) => {
-            console.log(`Register: Successfully new user added with username: ${username} pass: ${password}.`);
-            res.status(200).json({ id, username, houseId });
-          }).catch((ex) => {
-            console.log('Register: While insterting new user an error occured: ', ex);
-            res.status(500).send('Failed');
-          });
+          console.log('Register: While creating new user an error occured: House not exist with given id!');
+          res.status(400).send('House not exist with given id!');
         }
       }).catch((ex) => {
         console.log('Register: While fetching houses an error occured: ', ex);
