@@ -25,7 +25,7 @@ Development server is started on http://localhost:8787
 
 ## Serve Production
 To run app in production:
-* Run npm start command
+* Run npm scripts with
 `
 	npm run build
 	npm run serve
