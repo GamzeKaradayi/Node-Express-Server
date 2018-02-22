@@ -187,7 +187,7 @@ const houseRouter = (db) => {
               db.selectWithWhereCondition(userTable, { houseId }).then((houseUsers) => {
                 res.status(200).json(houseUsers.map((houseUser) => {
                   delete houseUser.isAdmin;
-                  delete houseUser.password;
+                  delete houseUser.lastname;
                   return houseUser;
                 }));
               }).catch((ex) => {

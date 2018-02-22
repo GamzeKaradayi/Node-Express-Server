@@ -7,7 +7,7 @@ const connect = () => Promise.resolve().then(() => {
   const connection = mysql.createConnection({
     host: CONFIG.DB.HOST || 'localhost',
     user: CONFIG.DB.USER || 'root',
-    password: CONFIG.DB.PASSWORD || '357159',
+    password: CONFIG.DB.PASSWORD || '123456',
     database: CONFIG.DB.DATABASE || 'houseworkup'
   });
 

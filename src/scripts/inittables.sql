@@ -5,8 +5,8 @@ CREATE TABLE house (
 
 CREATE TABLE user (
     id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    username varchar(20) NOT NULL,
-    password varchar(20) NOT NULL,
+    firstname varchar(20) NOT NULL,
+    lastname varchar(20) NOT NULL,
 		isAdmin TINYINT(1) NOT NULL DEFAULT 0,
     houseId int,
 		FOREIGN KEY (houseId)
@@ -42,9 +42,9 @@ INSERT INTO house (`name`) VALUES ('houseB');
 INSERT INTO house (`name`) VALUES ('houseC');
 INSERT INTO house (`name`) VALUES ('houseD');
 
-INSERT INTO user (`username`, `password`, `isAdmin`) VALUES ('adminuser', 'acc2018', '1');
-INSERT INTO user (`username`, `password`, `isAdmin`, `houseId`) VALUES ('user1', 'cscon18', '0', '1');
-INSERT INTO user (`username`, `password`, `isAdmin`, `houseId`) VALUES ('user2', 'cscon18', '0', '1');
+INSERT INTO user (`firstname`, `lastname`, `isAdmin`) VALUES ('adminuser', 'acc2018', '1');
+INSERT INTO user (`firstname`, `lastname`, `isAdmin`, `houseId`) VALUES ('user1', 'cscon18', '0', '1');
+INSERT INTO user (`firstname`, `lastname`, `isAdmin`, `houseId`) VALUES ('user2', 'cscon18', '0', '1');
 
 INSERT INTO task (`description`, `done`, `userId`, `houseId`, `createdUserId`) VALUES ('task1', false, '1', '1', '1');
 INSERT INTO task (`description`, `done`, `userId`, `houseId`, `createdUserId`) VALUES ('task2', true, '1', '1', '1');

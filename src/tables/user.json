@@ -2,8 +2,8 @@
   "name": "user",
   "fields": [
     "id",
-    "username",
-    "password",
+    "firstname",
+    "lastname",
     "isAdmin",
     "houseId"
   ]

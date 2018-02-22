@@ -22,7 +22,7 @@
         "parameters": [{
           "in": "body",
           "name": "body",
-          "description": "Create New user with username & password.",
+          "description": "Create New user with firstname & lastname.",
           "required": true,
           "schema": {
             "$ref": "#/definitions/NewUser"
@@ -49,11 +49,11 @@
           "application/json"
         ],
         "summary": "",
-        "description": "Authneticate user wiht password login",
+        "description": "Authnenticate user with firstname & lastname & houseId",
         "parameters": [{
           "in": "body",
           "name": "body",
-          "description": "Login with username & password.",
+          "description": "Login with firstname & lastname & houseId.",
           "required": true,
           "schema": {
             "$ref": "#/definitions/LoginUser"
@@ -406,15 +406,15 @@
     "NewUser": {
       "type": "object",
       "required": [
-        "username",
-        "password",
+        "firstname",
+        "lastname",
         "houseId"
       ],
       "properties": {
-        "username": {
+        "firstname": {
           "type": "string"
         },
-        "password": {
+        "lastname": {
           "type": "string"
         },
         "houseId": {
@@ -427,17 +427,22 @@
     "LoginUser": {
       "type": "object",
       "required": [
-        "username",
-        "password"
+        "firstname",
+        "lastname",
+        "houseId"
       ],
       "properties": {
-        "username": {
+        "firstname": {
           "type": "string",
           "default": "user1"
         },
-        "password": {
+        "lastname": {
           "type": "string",
           "default": "cscon18"
+        },
+        "houseId": {
+          "type": "integer",
+          "format": "int32"
         }
       }
     },
@@ -451,7 +456,7 @@
           "type": "integer",
           "format": "int32"
         },
-        "username": {
+        "firstname": {
           "type": "string"
         },
         "houseId": {
@@ -473,7 +478,7 @@
           "type": "integer",
           "format": "int32"
         },
-        "username": {
+        "firstname": {
           "type": "string"
         },
         "houseId": {
