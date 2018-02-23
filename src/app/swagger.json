@@ -86,8 +86,7 @@
               "$ref": "#/definitions/House"
             }
           }
-        },
-        "security": [{ "JWT": [] }]
+        }
       }
     },
     "/houses/{id}": {
