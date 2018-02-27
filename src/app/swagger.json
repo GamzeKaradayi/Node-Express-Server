@@ -346,14 +346,24 @@
         "summary": "",
         "description": "Update existed task",
         "parameters": [{
-          "name": "id",
-          "in": "path",
-          "description": "ID of task that needs to be updated",
-          "required": true,
-          "type": "integer",
-          "minimum": 1,
-          "format": "int32"
-        }],
+            "name": "id",
+            "in": "path",
+            "description": "ID of task that needs to be updated",
+            "required": true,
+            "type": "integer",
+            "minimum": 1,
+            "format": "int32"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Update task done status and user.",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/UpdateTask"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Task successfully updated.",
@@ -550,9 +560,6 @@
       "type": "object",
       "required": [],
       "properties": {
-        "description": {
-          "type": "string"
-        },
         "done": {
           "type": "boolean"
         },
