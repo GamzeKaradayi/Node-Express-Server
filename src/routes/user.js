@@ -20,7 +20,6 @@ const userRouter = (db) => {
             });
           } else {
             delete user.isAdmin;
-            delete user.lastname;
             res.status(200).json(user);
           }
         }).catch((ex) => {
@@ -55,7 +54,6 @@ const userRouter = (db) => {
               });
             } else if (user && user.id === userId) {
               delete user.isAdmin;
-              delete user.lastname;
               res.status(200).json(user);
             } else if (user) {
               res.status(401).json('Not authorized to see other users!');
