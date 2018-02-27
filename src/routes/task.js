@@ -155,7 +155,8 @@ const taskRouter = (db) => {
             const user = result && result.length ? result[0] : null;
             db.findById(taskTable, taskId).then((taskResult) => {
               const foundTask = taskResult && taskResult.length ? taskResult[0] : null;
-              if (validTaskdescription(description)) {
+              const descriptionToUpdate = description || foundTask.description;
+              if (validTaskdescription(descriptionToUpdate)) {
                 if (userId && Number.isInteger(userId)) {
                   db.findById(userTable, userId).then((assigneeUserResult) => {
                     const assigneeUser = assigneeUserResult && assigneeUserResult.length ? assigneeUserResult[0] : null;
@@ -163,10 +164,10 @@ const taskRouter = (db) => {
                       console.log(`Task: This is not allowed operation whether assignee user not exist with id ${userId} or houses are not matched!`);
                       res.status(400).send('This is not allowed operation check assigned user!');
                     } else if (user && user.isAdmin && foundTask) {
-                      db.updateWithWhereCondition(taskTable, { description, done, userId }, { id: taskId }).then(() => {
+                      db.updateWithWhereCondition(taskTable, { description: descriptionToUpdate, done, userId }, { id: taskId }).then(() => {
                         res.status(200).json({
                           id: taskId,
-                          description,
+                          description: descriptionToUpdate,
                           done,
                           userId,
                           houseId: foundTask.houseId
@@ -204,10 +205,10 @@ const taskRouter = (db) => {
                   });
                 } else {
                   if (user && user.isAdmin && foundTask) {
-                    db.updateWithWhereCondition(taskTable, { description, done, userId }, { id: taskId }).then(() => {
+                    db.updateWithWhereCondition(taskTable, { description: descriptionToUpdate, done, userId }, { id: taskId }).then(() => {
                       res.status(200).json({
                         id: taskId,
-                        description,
+                        description: descriptionToUpdate,
                         done,
                         userId,
                         houseId: foundTask.houseId
@@ -242,7 +243,7 @@ const taskRouter = (db) => {
                 }
               } else {
                 console.log('Task: Invalid task description!');
-                res.status(400).send('Invalid task description with ' + description);
+                res.status(400).send('Invalid task description with ' + descriptionToUpdate);
               }
             }).catch((ex) => {
               console.log('Task: While fetching task an error occured:', ex);
