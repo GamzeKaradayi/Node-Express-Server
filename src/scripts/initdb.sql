@@ -1,4 +1,4 @@
-create database houseworkup DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
+create database houseworkup DEFAULT CHARACTER SET latin5 DEFAULT COLLATE latin5_turkish_ci;
 
 create user 'houseworkdbuser'@'localhost' identified by 'houseworkdbuser';
 

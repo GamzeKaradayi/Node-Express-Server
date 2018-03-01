@@ -8,7 +8,7 @@ export function validFirstname(str) {
 // Expected lastname has character less than 20 and more than 6 characters
 export function validLastname(lastname) {
   const regexp = RegExp('^[a-zA-Z0-9_ -]*');
-  return !!lastname && lastname.length >= 6 && lastname.length <= 20 && regexp.test(lastname);
+  return !!lastname && lastname.length >= 3 && lastname.length <= 20 && regexp.test(lastname);
 }
 
 
