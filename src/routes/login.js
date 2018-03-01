@@ -20,10 +20,12 @@ const loginRouter = (db) => {
             success: true,
             id: user.id,
             firstname: user.firstname,
+            lastname: user.lastname,
             houseId: user.houseId,
             jwt: jwt.sign({
               id: user.id,
               firstname: user.firstname,
+              lastname: user.lastname,
               admin: false,
               isAuth: true
             }, config.JWT.SECRET)
@@ -39,6 +41,7 @@ const loginRouter = (db) => {
                   success: true,
                   id,
                   firstname,
+                  lastname,
                   houseId,
                   jwt: jwt.sign({
                     id,
