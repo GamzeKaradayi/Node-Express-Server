@@ -4,7 +4,7 @@ import config from './config/config';
 import http from 'http';
 
 const start = () =>
-  storage.connect().then((db) => {
+  storage.connect(config.DB).then((db) => {
     app.start(db).then((exp) => {
       // start server
       const server = http.Server(exp);

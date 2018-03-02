@@ -1,14 +1,13 @@
 'use strict';
 
 const mysql = require('mysql');
-const CONFIG = require('../config/config.js');
 
-const connect = () => Promise.resolve().then(() => {
+const connect = (dbconf) => Promise.resolve().then(() => {
   const connection = mysql.createConnection({
-    host: CONFIG.DB.HOST || 'localhost',
-    user: CONFIG.DB.USER || 'root',
-    password: CONFIG.DB.PASSWORD || '123456',
-    database: CONFIG.DB.DATABASE || 'houseworkup'
+    host: dbconf.HOST || 'localhost',
+    user: dbconf.USER || 'root',
+    password: dbconf.PASSWORD || '123456',
+    database: dbconf.DATABASE || 'houseworkup'
   });
 
   connection.connect();
